@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\BaseController;
 use App\Http\Requests\Admin\ProductRequest;
+use App\Models\ProductStock;
 use App\Services\ProductService;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,13 +57,13 @@ class ProductController extends BaseController
             $created_product->categories()->sync($product['categories']);
         }
 
-        $created_product->stocks->create([
-            'in_stock' => $product['in_stock'],
-            'description' => 'الكمية الافتتاحية',
-            'date' => date('Y-m-d'),
-            'product_id' => $created_product->id,
-            'user_id' => Auth::user()->id
-        ]);
+        $stock = new ProductStock;
+        $stock->product_id = $created_product->id;
+        $stock->in_stock = $product['in_stock'];
+        $stock->description = 'الكمية الافتتاحية';
+        $stock->date = date('Y-m-d');
+        $stock->user_id = Auth::user()->id;
+        $stock->save();
 
         return redirect()->back()->with(['success' => 'Added Successfully']);
     }

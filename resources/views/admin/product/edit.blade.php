@@ -49,8 +49,8 @@
                             <td>الاقسام</td>
                             <td>
                                 <select class="select2 select2-multiple" multiple="multiple" multiple name="categories[]" required>
-                                    @foreach ($data['categpries'] as $category)
-                                        <option value="{{$category->id}}" {{$product->categories->where('category_id',$category->id)->count() > 0 ? 'selected' : ''}}>{{$category->title}}</option>
+                                    @foreach ($data['categories'] as $key => $value)
+                                        <option value="{{$key}}" {{$product->categories->where('category_id',$key)->count() > 0 ? 'selected' : ''}}>{{$value}}</option>
                                     @endforeach
                                 </select>
                             </td>

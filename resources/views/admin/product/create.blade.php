@@ -55,8 +55,8 @@
                                 <td>الاقسام</td>
                                 <td>
                                     <select class="select2 select2-multiple" multiple="multiple" multiple name="categories[]" required>
-                                        @foreach ($data['categpries'] as $category)
-                                            <option value="{{$category->id}}">{{$category->title}}</option>
+                                        @foreach ($data['categories'] as $key => $value)
+                                            <option value="{{$key}}">{{$value}}</option>
                                         @endforeach
                                     </select>
                                 </td>

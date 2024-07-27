@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::group(['namespace' => 'App\Http\Controllers\Admin', 'middleware' => ['web'],'as' => 'admin.', 'prefix' => 'admin'], function(){
 
-    Route::get('/', 'IndexController@index')->name('home');
+    Route::get('/home', 'IndexController@index')->name('home');
 
     Route::resources([
         'category' =>  'CategoryController',

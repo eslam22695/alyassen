@@ -13,11 +13,11 @@ class Product extends Model
 
     public function categories()
     {
-        return $this->belongsToMany(ProductCategory::class, 'product_categories', 'product_id' ,'category_id');
+        return $this->belongsToMany(ProductCategory::class, 'product_categories', 'PIVOT', 'product_id' ,'category_id');
     }
     
     public function stocks()
     {
-        return $this->belongsToMany(ProductStock::class, 'product_stocks', 'product_id');
+        return $this->hasMany(ProductStock::class, 'product_id');
     }
 }

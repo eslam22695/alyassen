@@ -43,14 +43,6 @@
                                 {{$product->alert_quantity}}
                             </td>
                         </tr>
-                        <tr>
-                            <td>الاقسام</td>
-                            <td>
-                                @foreach ($product->categories as $category)
-                                    <span class="badge badge-primary">{{$category->title}}</span>
-                                @endforeach
-                            </td>
-                        </tr>
                     </tbody>
                 </table>
                

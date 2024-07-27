@@ -19,10 +19,12 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-sm-12">
+                        @can('product-create')
                         <div class=" main-btn-00">
                             <!-- Responsive modal -->
                             <a href="{{route('admin.product.create')}}" class="btn btn-default waves-effect"><i class="fa fa-plus" aria-hidden="true"></i></a>
                         </div>
+                        @endcan
                     </div>
                 </div>
                 <div class="table-responsive">
@@ -53,9 +55,13 @@
                                         <td class="actions">
                                             <a href="{{route('admin.product.show',$product->id)}}" class="btn btn-info waves-effect"><i class="fa fa-eye"></i></a>
 
+                                            @can('product-edit')
                                             <a href="{{route('admin.product.edit',$product->id)}}" class="btn btn-primary waves-effect"><i class="fa fa-edit"></i></a>
+                                            @endcan
 
+                                            @can('product-delete')
                                             <button type="button" class="btn btn-danger waves-effect" data-toggle="modal" data-target="#{{$product->id}}delete"> <i class="fa fa-times" aria-hidden="true"></i></button>
+                                            @endcan
                                             
                                             <div id="{{$product->id}}delete" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="custom-width-modalLabel" aria-hidden="true" style="display: none;">
                                                 <div class="modal-dialog" style="width:55%;">
@@ -89,30 +95,4 @@
         </div><!-- end col -->
     </div>
         
-@endsection
-
-@section('scripts')
-    <script>
-        $(document).ready(function(){ 
-
-            $('#car-select').change(function() {
-                var carId = $(this).val();
-                $.ajax({
-                    type: 'POST',
-                    url: '{{ route('get-categories') }}',
-                    data: { car_id: carId },
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    },
-                    success: function(data) {
-                        $('#category-select').empty();
-                        $.each(data, function(index, category) {
-                            $('#category-select').append('<option value="' + category.id + '">' + category.title + '</option>');
-                        });
-                    }
-                });
-            });
-        });  
-    </script>
-
 @endsection

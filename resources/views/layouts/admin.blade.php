@@ -200,6 +200,8 @@
 
                     <ul>
                         <li><a href="{{ route('admin.home') }}" class="waves-effect"><i class="ti-home"></i> <span>الرئيسية </span></a></li>
+                        <li><a href="{{ route('admin.category.index') }}" class="waves-effect"><i class="ti-home"></i> <span>الاقسام </span></a></li>
+                        <li><a href="{{ route('admin.product.index') }}" class="waves-effect"><i class="ti-home"></i> <span>المنتجات </span></a></li>
                     </ul>
 
                     <div class="clearfix"></div>

@@ -26,10 +26,12 @@
             <div class="card-box">
                 <div class="row">
                     <div class="col-sm-12">
+                        @can('category-create')
                         <div class=" main-btn-00">
                             <!-- Responsive modal -->
                             <button type="button" class="btn btn-default waves-effect" data-toggle="modal" data-target="#add"> <i class="fa fa-plus" aria-hidden="true"></i></button>
                         </div>
+                        @endcan
                     </div>
                 </div>
                 <div class="col-sm-12">
@@ -85,8 +87,13 @@
                                         <td>{{$category->title}}</td>
                                         
                                         <td class="actions">
+                                            @can('category-edit')
                                             <button type="button" class="btn btn-success waves-effect" data-toggle="modal" data-target="#{{$category->id}}edit"> <i class="fa fa-edit" aria-hidden="true"></i></button>
+                                            @endcan
+
+                                            @can('category-delete')
                                             <button type="button" class="btn btn-danger waves-effect" data-toggle="modal" data-target="#{{$category->id}}delete"> <i class="fa fa-times" aria-hidden="true"></i></button>
+                                            @endcan
                                         </td>
                                     </tr>
 
